@@ -1,15 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+package Ex1;
+
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        //Создать массив с набором слов (10-20 слов, должны встречаться повторяющиеся).
+        String[] arr = {"Yellow", "Red", "Black", "Green", "Blue",
+                        "Yellow", "Orange", "Gray", "Red", "Gold",
+                        "Pink", "Gray", "White", "Brown", "Black",
+                        "Red", "Orange", "Gray", "Red", "Gold"};
+        //Найти и вывести список уникальных слов, из которых состоит массив (дубликаты не считаем).
+        System.out.println("Уникальные слова:");
+        System.out.println(new HashSet<>(List.of(arr)));
+        System.out.println("------------------------------");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //Посчитать сколько раз встречается каждое слово.
+        System.out.println("Дубли слов:");
+        Map<String, Integer> hm = new HashMap<>();
+        Arrays.stream(arr).forEach(s -> hm.put(s, Collections.frequency(List.of(arr), s)));
+        System.out.println(hm);
+        System.out.println("------------------------------");
     }
 }
